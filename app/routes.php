@@ -11,16 +11,22 @@
 |
 */
 
-Route::get('/', array('before'=>'birthday', function()
+Route::get('/', function()
 {
-	return View::make('hello');
-}
-));
-Route::get('/books', function () 
-{
-	return View::make('books');
+	return View::make('pages.home');
 });
-Route::get('first', function () 
+Route::get('about', function ()
 {
-	return 'Second route.';
+	return View::make('pages.about');
 });
+Route::get('projects', function ()
+{
+	return View::make('pages.projects');
+});
+Route::get('contact', function ()
+{
+	return View::make('pages.contact');
+});
+Route::get('login', array('users' => 'HomeController@showLogin'));
+
+Route::post('login', array('users' => 'HomeController@doLogin'));
